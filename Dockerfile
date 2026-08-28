@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxrender1 \
     xfonts-75dpi \
     xfonts-base \
-    libjpeg62-turbo \
+    libjpeg-dev \
      && wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb \
      && apt-get install -y ./wkhtmltox_0.12.6.1-2.bullseye_amd64.deb \
      && rm -rf /var/lib/apt/lists/* *.deb
