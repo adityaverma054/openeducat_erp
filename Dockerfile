@@ -2,7 +2,7 @@ FROM odoo:18
 
 USER root
 
-# Install system dependencies & wkhtmltopdf for invoices/reports
+# Install system dependencies (Skipping complex wkhtmltopdf build issues to guarantee a smooth free deployment)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     fontconfig \
@@ -14,9 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xfonts-75dpi \
     xfonts-base \
     libjpeg-dev \
-     && wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb \
-     && apt-get install -y ./wkhtmltox_0.12.6.1-2.bullseye_amd64.deb \
-     && rm -rf /var/lib/apt/lists/* *.deb
+    && rm -rf /var/lib/apt/lists/*
 
 # Setup addons directory
 RUN mkdir -p /mnt/extra-addons && chown -R odoo:odoo /mnt/extra-addons
